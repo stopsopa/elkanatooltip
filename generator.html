@@ -7,6 +7,8 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+
     <meta name="description" content="jQuery.line plugin to draw lines in HTML5 using pure CSS3 by Szymon Działowski">
     <meta name="keywords" content="jQuery.line plugin draw lines html5 css3">
 
@@ -21,20 +23,20 @@
     <script src="//d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="../../js/aceedit/jquery.aceedit.css" media="all" />
     <script src="../../js/aceedit/jquery.aceedit.js"></script>
-    
+
     <script src="../../js/underscore.js"></script>
     <script src="../../js/URI.js"></script>
     <script src="jquery.urlstate.js"></script>
 
     <style type="text/css" data-style></style>
 
-<!--	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write(unescape('%3Cscript src="http://jquery.com/jquery-wp-content/themes/jquery/js/jquery-1.9.1.min.js"%3E%3C/script%3E'))</script>
-	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" media="all" />
-	<script src="http://httpd.pl/poligon/jquery.line/jquery.minicolors/jquery.minicolors.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://httpd.pl/poligon/jquery.line/jquery.minicolors/jquery.minicolors.css" media="all" />
+    <!--	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write(unescape('%3Cscript src="http://jquery.com/jquery-wp-content/themes/jquery/js/jquery-1.9.1.min.js"%3E%3C/script%3E'))</script>
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" media="all" />
+        <script src="http://httpd.pl/poligon/jquery.line/jquery.minicolors/jquery.minicolors.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://httpd.pl/poligon/jquery.line/jquery.minicolors/jquery.minicolors.css" media="all" />
 
-	<link rel="stylesheet" type="text/css" href="http://stopsopa.bitbucket.org/js/bootstrap/css/bootstrap-rewrite.css" media="all" />   -->
+        <link rel="stylesheet" type="text/css" href="http://stopsopa.bitbucket.org/js/bootstrap/css/bootstrap-rewrite.css" media="all" />   -->
 
 
 
@@ -47,14 +49,14 @@
             margin-top: 50px;
         }
         #body .ff {
-	    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+            font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
         }
         th,
         .f * ,
         .f {
             margin: 0;
             padding: 0;
-	    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+            font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
         }
         #cont {
             width: 950px;
@@ -68,8 +70,15 @@
             margin-right: 52px;
             margin-top: 87px;
         }
+        table {
+            margin-right: 10px;
+        }
         td {
             vertical-align: top;
+            padding: 3px 7px;
+        }
+        input {
+            font-size: 13px;
         }
         #test {
             padding-bottom: 77px;
@@ -89,7 +98,7 @@
             width: 68%;
         }
         .col2 > p {
-	    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+            font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
             margin: 2px;
         }
         .left {
@@ -98,7 +107,7 @@
         .drag {
             padding: 10px;
             border: 1px solid silver;
-	    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+            font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
             cursor: move;
             white-space: nowrap;
             background-color: white;
@@ -432,7 +441,7 @@
                     dedit.selectAll();
                 })
 
-                var tmp, option = { 
+                var tmp, option = {
                     position: {
                         my: 'top',
                         at: 'bottom'
@@ -442,75 +451,75 @@
                 };
 
                 $.ajax('./jquery.elkanatooltip_tmp.css')
-                    .done(function (tmp) {
+                        .done(function (tmp) {
 
-                        tmp = _.template(tmp);
+                            tmp = _.template(tmp);
 
-                        edit = _.debounce(function () {
+                            edit = _.debounce(function () {
 
-                            try {
-                                testdiv.empty().html(testdivs());
+                                try {
+                                    testdiv.empty().html(testdivs());
 
-                                var elem        = testdiv.find('.test_element');
-                                var tool        = testdiv.find('.test_tooltip');
+                                    var elem        = testdiv.find('.test_element');
+                                    var tool        = testdiv.find('.test_tooltip');
 
-                                var d = update.defform();
-                                d.a = parseInt(d.a)
-                                d.w = parseInt(d.w)
-                                d.r = parseInt(d.r)
-                                d.d = parseInt(d.d)
+                                    var d = update.defform();
+                                    d.a = parseInt(d.a)
+                                    d.w = parseInt(d.w)
+                                    d.r = parseInt(d.r)
+                                    d.d = parseInt(d.d)
 
-    //                            var style = tmp({json: option});
-                                var style = "/* url: "+update()+" */\n"+$.trim(
-                                    tmp({
-                                        json: option,
-                                        perma: d,
-                                        url: update()
-                                    })
-                                    .replace(/\n\s*\n/g, "\n").replace(/\n\s*\n/g, "\n")
-                                    .replace(/(\/\*[.\S\s]*?\*\/)/g, '').replace(/\n\s*\n/g, "\n")
-                                    .replace(/\n\s+/g, "\n    ").replace(/\n\s*}\s*\n\s*/g, "\n}\n")
-                                    .replace(/,\n\s+/g, ',\n')
-                                );
+                                    //                            var style = tmp({json: option});
+                                    var style = "/* url: "+update()+" */\n"+$.trim(
+                                                    tmp({
+                                                        json: option,
+                                                        perma: d,
+                                                        url: update()
+                                                    })
+                                                            .replace(/\n\s*\n/g, "\n").replace(/\n\s*\n/g, "\n")
+                                                            .replace(/(\/\*[.\S\s]*?\*\/)/g, '').replace(/\n\s*\n/g, "\n")
+                                                            .replace(/\n\s+/g, "\n    ").replace(/\n\s*}\s*\n\s*/g, "\n}\n")
+                                                            .replace(/,\n\s+/g, ',\n')
+                                            );
 
-                                $('[data-source]').remove();
-                                $(ltmp).appendTo(head).html(style);
-                                option.cls = d.cls;
+                                    $('[data-source]').remove();
+                                    $(ltmp).appendTo(head).html(style);
+                                    option.cls = d.cls;
 
 //                                dedit.setValue(style.replace(/\n\s*\n/g, '\n'));
-                                dedit.setValue(style);
-                                dedit.clearSelection();
-                                dedit.getSession().setScrollTop(0);
+                                    dedit.setValue(style);
+                                    dedit.clearSelection();
+                                    dedit.getSession().setScrollTop(0);
 
-                                elem.elkanatooltip(tool, option);
-
-                                elem
-                                    .draggable({
-                                        drag: function () {
-                                            process.nextTick(function() {
-                                                elem.elkanatooltip(true, d.cls);
-                                            });
-                                        }
-                                    })
-                                    .click(function () {
-                                        elem.elkanatooltip(!elem.elkanatooltip(null, d.cls).show, d.cls);
-                                    });
-
-                                $('table input:radio').unbind('click').click(function () {
-                                    var t = $(this);
-                                    option.position[t.attr('name')] = t.val();
                                     elem.elkanatooltip(tool, option);
-                                });
-                            }
-                            catch (e) {
-                                log('To early to call edit(): '+e)
-                            }
 
-                        }, 300);
+                                    elem
+                                            .draggable({
+                                                drag: function () {
+                                                    process.nextTick(function() {
+                                                        elem.elkanatooltip(true, d.cls);
+                                                    });
+                                                }
+                                            })
+                                            .click(function () {
+                                                elem.elkanatooltip(!elem.elkanatooltip(null, d.cls).show, d.cls);
+                                            });
 
-                        edit();
+                                    $('table input:radio').unbind('click').click(function () {
+                                        var t = $(this);
+                                        option.position[t.attr('name')] = t.val();
+                                        elem.elkanatooltip(tool, option);
+                                    });
+                                }
+                                catch (e) {
+                                    log('To early to call edit(): '+e)
+                                }
 
-                    });
+                            }, 300);
+
+                            edit();
+
+                        });
 
                 function download(filename, content) {
                     var element = document.createElement('a');
@@ -545,146 +554,146 @@
             color: red !important;
         }
     </script>-->
-    
-    <div id="cont">
-	<div class="btsp">
-<!--            <div class="alert alert-info btsp f">
-                <i class="glyphicon glyphicon-info-sign btsp"></i> Adjust setup and have fun while draging and clicking elements on this page
-            </div> -->
 
-            <div class="col1 left">
+<div id="cont">
+    <div class="btsp">
+        <!--            <div class="alert alert-info btsp f">
+                        <i class="glyphicon glyphicon-info-sign btsp"></i> Adjust setup and have fun while draging and clicking elements on this page
+                    </div> -->
 
-                <div class="btsp">
-                    <a href="https://github.com/stopsopa/elkanatooltip" class="btn btn-link btsp f" id="home" target="_blank"><img src="https://github.com/fluidicon.png" height="31" /> manual/download</a>
-                    <a href="" class="reset btn btn-link btsp f">reset</a>
-                </div>
+        <div class="col1 left">
 
-                <table class="left">
-                    <thead>
-                        <tr>
-                            <th colspan="3">me <sup class="red">*</sup></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="radio" name="my" value="left top" autocomplete="off"/></td>
-                            <td><input type="radio" name="my" value="top" autocomplete="off" checked="checked"/></td>
-                            <td><input type="radio" name="my" value="right top" autocomplete="off"/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="my" value="left" autocomplete="off"/></td>
-                            <td><input type="radio" name="my" value="center center" autocomplete="off"/></td>
-                            <td><input type="radio" name="my" value="right" autocomplete="off"/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="my" value="left bottom" autocomplete="off"/></td>
-                            <td><input type="radio" name="my" value="bottom" autocomplete="off"/></td>
-                            <td><input type="radio" name="my" value="right bottom" autocomplete="off"/></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="left">
-                    <thead>
-                        <tr>
-                            <th colspan="3">at <sup class="red">*</sup></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="radio" name="at" value="left top" autocomplete="off"/></td>
-                            <td><input type="radio" name="at" value="top" autocomplete="off"/></td>
-                            <td><input type="radio" name="at" value="right top" autocomplete="off"/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="at" value="left" autocomplete="off"/></td>
-                            <td><input type="radio" name="at" value="center center" autocomplete="off"/></td>
-                            <td><input type="radio" name="at" value="right" autocomplete="off"/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="at" value="left bottom" autocomplete="off"/></td>
-                            <td><input type="radio" name="at" value="bottom" autocomplete="off" checked="checked"/></td>
-                            <td><input type="radio" name="at" value="right bottom" autocomplete="off"/></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="clear"></div>
-
-                <table class="controls t">
-                    <tbody>
-                        <tr>
-                            <td width="79">class</td>
-                            <td><input type="text" value="" name="cls" data-change /></td>
-                        </tr>
-                        <tr>
-                            <td>width</td>
-                            <td><input type="text" value="" name="width" data-change data-int="0:"/></td>
-                        </tr>
-                        <tr>
-                            <td>color</td>
-                            <td><input type="text" value="" name="color" data-change data-colors /></td>
-                        </tr>
-                        <tr>
-                            <td>arrow</td>
-                            <td><input type="text" value="" name="arrow" data-change data-int="0:"/></td>
-                        </tr>
-                        <tr>
-                            <td>radius</td>
-                            <td><input type="text" value="" name="radius" data-change data-int="0:"/></td>
-                        </tr>
-                        <tr>
-                            <td>bg color</td>
-                            <td><input type="text" value="" name="bgcolor" data-change data-colors/></td>
-                        </tr>
-                        <tr>
-                            <td>distance</td>
-                            <td><input type="text" value="" name="distance" data-change data-int/></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p class="tip t">* Rest of params change manually in css or override better</p>
-
-                <div class="clear"></div>
-
-
-
-
-                <div id="test" class="left f">
-
-<!--
-                     target element vvv
-                        <div id="test_element" class="drag">drag or click</div>
-                     target element ^^^
-
-                     tooltip element vvv
-                        <div id="test_tooltip">first line <br /> second line</div>
-                     tooltip element ^^^
--->
-
-                </div>
-
-                <div class="clear"></div>
-<!--
-                <div class="btspa">
-                    <span class="animated bounce glyphicon glyphicon-exclamation-sign"></span> See also extension/wrappers:
-                    <ul>
-                        <li><a href="datawrapper.html">data wrapper extension</a></li>
-                        <li><a href="titlewrapper.html">title wrapper extension</a></li>
-                    </ul>
-                </div>
-                <div class="btspa">
-                    <ul>
-                        <li>napisać manual</li>
-                        <li>title wrapper</li>
-                        <li>data-* wrapper</li>
-                    </ul>
-                </div>-->
+            <div class="btsp">
+                <a href="https://github.com/stopsopa/elkanatooltip" class="btn btn-link btsp f" id="home" target="_blank"><img src="https://github.com/fluidicon.png" height="31" /> manual/download</a>
+                <a href="" class="reset btn btn-link btsp f">reset</a>
             </div>
 
-            <div class="col2 left">
-                <p>Live css styles:</p>
-                <div data-target class="syntax" data-lang="css" data-w="644px">
-                    <script type="text/tmp">
+            <table class="left">
+                <thead>
+                <tr>
+                    <th colspan="3">me <sup class="red">*</sup></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="radio" name="my" value="left top" autocomplete="off"/></td>
+                    <td><input type="radio" name="my" value="top" autocomplete="off" checked="checked"/></td>
+                    <td><input type="radio" name="my" value="right top" autocomplete="off"/></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="my" value="left" autocomplete="off"/></td>
+                    <td><input type="radio" name="my" value="center center" autocomplete="off"/></td>
+                    <td><input type="radio" name="my" value="right" autocomplete="off"/></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="my" value="left bottom" autocomplete="off"/></td>
+                    <td><input type="radio" name="my" value="bottom" autocomplete="off"/></td>
+                    <td><input type="radio" name="my" value="right bottom" autocomplete="off"/></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="left">
+                <thead>
+                <tr>
+                    <th colspan="3">at <sup class="red">*</sup></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="radio" name="at" value="left top" autocomplete="off"/></td>
+                    <td><input type="radio" name="at" value="top" autocomplete="off"/></td>
+                    <td><input type="radio" name="at" value="right top" autocomplete="off"/></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="at" value="left" autocomplete="off"/></td>
+                    <td><input type="radio" name="at" value="center center" autocomplete="off"/></td>
+                    <td><input type="radio" name="at" value="right" autocomplete="off"/></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="at" value="left bottom" autocomplete="off"/></td>
+                    <td><input type="radio" name="at" value="bottom" autocomplete="off" checked="checked"/></td>
+                    <td><input type="radio" name="at" value="right bottom" autocomplete="off"/></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="clear"></div>
+
+            <table class="controls t">
+                <tbody>
+                <tr>
+                    <td width="79">class</td>
+                    <td><input type="text" value="" name="cls" data-change /></td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td><input type="text" value="" name="width" data-change data-int="0:"/></td>
+                </tr>
+                <tr>
+                    <td>color</td>
+                    <td><input type="text" value="" name="color" data-change data-colors /></td>
+                </tr>
+                <tr>
+                    <td>arrow</td>
+                    <td><input type="text" value="" name="arrow" data-change data-int="0:"/></td>
+                </tr>
+                <tr>
+                    <td>radius</td>
+                    <td><input type="text" value="" name="radius" data-change data-int="0:"/></td>
+                </tr>
+                <tr>
+                    <td>bg color</td>
+                    <td><input type="text" value="" name="bgcolor" data-change data-colors/></td>
+                </tr>
+                <tr>
+                    <td>distance</td>
+                    <td><input type="text" value="" name="distance" data-change data-int/></td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="tip t">* Rest of params change manually in css or override better</p>
+
+            <div class="clear"></div>
+
+
+
+
+            <div id="test" class="left f">
+
+                <!--
+                                     target element vvv
+                                        <div id="test_element" class="drag">drag or click</div>
+                                     target element ^^^
+
+                                     tooltip element vvv
+                                        <div id="test_tooltip">first line <br /> second line</div>
+                                     tooltip element ^^^
+                -->
+
+            </div>
+
+            <div class="clear"></div>
+            <!--
+                            <div class="btspa">
+                                <span class="animated bounce glyphicon glyphicon-exclamation-sign"></span> See also extension/wrappers:
+                                <ul>
+                                    <li><a href="datawrapper.html">data wrapper extension</a></li>
+                                    <li><a href="titlewrapper.html">title wrapper extension</a></li>
+                                </ul>
+                            </div>
+                            <div class="btspa">
+                                <ul>
+                                    <li>napisać manual</li>
+                                    <li>title wrapper</li>
+                                    <li>data-* wrapper</li>
+                                </ul>
+                            </div>-->
+        </div>
+
+        <div class="col2 left">
+            <p>Live css styles:</p>
+            <div data-target class="syntax" data-lang="css" data-w="644px">
+                <script type="text/tmp">
 /* testowy css ma być zastąpiony przez javascript */
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
@@ -694,27 +703,27 @@ body {
   color: $primary-color;
 }
                     </script>
-                </div>
-
-                <div class="btspa">
-                    <div class="btn-group">
-                        <button class="btn btn-xs btn-success ff" data-select>
-                            <i class="glyphicon glyphicon-copy"></i>
-                            Select all to copy
-                        </button>
-                        <button class="btn btn-xs btn-success ff" data-download>
-                            <i class="glyphicon glyphicon-download"></i>
-                            download as a css file
-                        </button>
-                    </div>
-                </div>
             </div>
 
-	</div>
-    </div>
+            <div class="btspa">
+                <div class="btn-group">
+                    <button class="btn btn-xs btn-success ff" data-select>
+                        <i class="glyphicon glyphicon-copy"></i>
+                        Select all to copy
+                    </button>
+                    <button class="btn btn-xs btn-success ff" data-download>
+                        <i class="glyphicon glyphicon-download"></i>
+                        download as a css file
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <!-- see http://codepo8.github.io/css-fork-on-github-ribbon/ -->
-    <a href="https://github.com/stopsopa/elkanatooltip" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    </div>
+</div>
+
+<!-- see http://codepo8.github.io/css-fork-on-github-ribbon/ -->
+<a href="https://github.com/stopsopa/elkanatooltip" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 <script type="text/tmp" data-testdivs>
     <!-- target element vvv -->
         <div class="test_element drag">drag or click</div>
