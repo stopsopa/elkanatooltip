@@ -189,8 +189,12 @@
         .controls {
             width: 97%;
         }
-        .controls input {
-            width: 200px;
+        body#body .controls input[type="text"] {
+            width: 145px;
+            padding: 2px;
+            margin: 0;
+            height: 17px;
+            border: 1px solid gray;
         }
         body .minicolors-theme-bootstrap.minicolors-position-right .minicolors-input {
             padding: 2px;
@@ -408,6 +412,44 @@
                         }
 
                         field.val(value);
+                    },
+                    sw : function (s, value) {
+
+                        var def = '6';
+
+                        if (s === 'def')
+                            return def;
+
+                        var field = $('[name="shadoww"]');
+
+                        if (s === 'read') {
+                            var v = field.val();
+                            if ((v+'').length) {
+                                return v;
+                            }
+                            return def;
+                        }
+
+                        field.val(value);
+                    },
+                    sc : function (s, value) {
+
+                        var def = '#000000';
+
+                        if (s === 'def')
+                            return def;
+
+                        var field = $('[name="shadowc"]');
+
+                        if (s === 'read') {
+                            var v = field.val();
+                            if ((v+'').length) {
+                                return v;
+                            }
+                            return def;
+                        }
+
+                        field.val(value);
                     }
                 }
             });
@@ -464,10 +506,11 @@
                                     var tool        = testdiv.find('.test_tooltip');
 
                                     var d = update.defform();
-                                    d.a = parseInt(d.a)
-                                    d.w = parseInt(d.w)
-                                    d.r = parseInt(d.r)
-                                    d.d = parseInt(d.d)
+                                    d.a  = parseInt(d.a)
+                                    d.w  = parseInt(d.w)
+                                    d.r  = parseInt(d.r)
+                                    d.d  = parseInt(d.d)
+                                    d.sw = parseInt(d.sw)
 
                                     //                            var style = tmp({json: option});
                                     var style = "/* url: "+update()+" */\n"+$.trim(
@@ -622,7 +665,7 @@
             <table class="controls t">
                 <tbody>
                 <tr>
-                    <td width="79">class</td>
+                    <td width="116">class</td>
                     <td><input type="text" value="" name="cls" data-change /></td>
                 </tr>
                 <tr>
@@ -648,6 +691,14 @@
                 <tr>
                     <td>distance</td>
                     <td><input type="text" value="" name="distance" data-change data-int/></td>
+                </tr>
+                <tr>
+                    <td>shadow w</td>
+                    <td><input type="text" value="" name="shadoww" data-change data-int="0:"/></td>
+                </tr>
+                <tr>
+                    <td>shadow color</td>
+                    <td><input type="text" value="" name="shadowc" data-change data-colors/></td>
                 </tr>
                 </tbody>
             </table>
