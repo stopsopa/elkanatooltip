@@ -5,6 +5,8 @@
     <title>jQuery.elkanatooltip by Szymon Działowski</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     
     <meta name="description" content="jQuery.line plugin to draw lines in HTML5 using pure CSS3 by Szymon Działowski">
     <meta name="keywords" content="jQuery.line plugin draw lines html5 css3">
@@ -35,11 +37,10 @@
     
     <!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&subset=latin,cyrillic-ext,latin-ext,cyrillic" rel="stylesheet" type="text/css">-->
     <script type="text/javascript" src="jquery.elkanatooltip.js"></script>
-    <link rel="stylesheet" type="text/css" href="jquery.elkanatooltip.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="elkanatooltip_generated.css" media="all" />
     
     <style type="text/css">  
         body {
-            margin-top: 50px;
         }
         th,
         .f *,
@@ -51,10 +52,15 @@
         #cont {
             width: 950px;
             margin: auto;
+            margin-top: 10px;
         }
-	td {
-	    vertical-align: top;
-	}
+        table {
+            margin-right: 10px;
+        }
+        td {
+            vertical-align: top;
+            padding: 3px 7px;
+        }
         #test {
             padding-bottom: 77px;
             padding-left: 78px;
@@ -112,6 +118,11 @@
             color: #333;
             -webkit-animation-name: bounce; 
             animation-name: bounce; 
+        }
+        .tip {
+            font-size: 10px;
+            color: #333;
+            margin: 2px;
         }
     </style>
     
@@ -203,8 +214,39 @@
             
         });
     </script>
+    <style>
+        .navi {
+            background-color: #1b1b1b;
+            background-image: linear-gradient(to bottom, #222222, #111111);
+            background-repeat: repeat-x;
+            padding-left: 30px;
+            -webkit-box-shadow: 0 0 9px #000000;
+            box-shadow: 0 0 9px #000000;
+        }
+        .navi a {
+            color: #999999;
+            padding: 10px;
+            display: inline-block;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .navi a:hover {
+            color: white;
+        }
+        .navi a.active {
+            color: white;
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
+
+<div class="navi">
+    <a href="demo.html" class="active">js usage example</a>
+    <a href="generator.html">css generator</a>
+</div>
+
     <div id="cont"> 
 	<div class="btsp"> 
 <!--            <div class="alert alert-info btsp f">
@@ -212,10 +254,6 @@
             </div> -->
             
             <div class="col1 left">
-                
-                <div class="btsp">
-                    <a href="https://github.com/stopsopa/elkanatooltip" class="btn btn-link btsp f" id="home" target="_blank"><img src="https://github.com/fluidicon.png" height="31" /> manual/download</a>          
-                </div> 
                                 
                 <table class="left">
                     <thead>
@@ -265,12 +303,18 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
                 <div class="clear"></div>
-                                
-                <p class="f btspa"><span class="red">*</span>params "me", "at" what's that ??? <br />follow manual of <a href="https://jqueryui.com/position/" target="_blank">jQuery UI position</a></p>
-                      
-                
+
+                <p class="tip t"><span class="red">*</span> params "me", "at" what's that ??? <br>
+                    follow manual of <a href="https://jqueryui.com/position/" target="_blank">jQuery UI position</a>
+                </p>
+
+                <div class="clear"></div>
+                <br>
+                <br>
+                <br>
+
                 <div id="test" class="left f">
                     
                     <!-- target element vvv -->
@@ -284,32 +328,40 @@
                 </div>
                     
                 <div class="clear"></div>
+
                 
-                <div class="btspa">
-                    <span class="animated bounce glyphicon glyphicon-exclamation-sign"></span> See also extension/wrappers:
-                    <ul>
-                        <li><a href="datawrapper.html">data wrapper extension</a></li>
-                        <li><a href="titlewrapper.html">title wrapper extension</a></li>
-                    </ul>
-                </div>
-                <div class="btspa">
-                    <ul>
-                        <li>napisać manual</li>
-                        <li>title wrapper</li>
-                        <li>data-* wrapper</li>
-                    </ul>
-                </div>
-            </div>  
-            <div class="col2 left">     
-                <p>Include javascript and css:</p>
-                <div class="syntax" data-lang="html" data-h="48px" data-w="644px">
+                <!--<div class="btspa">-->
+                    <!--<span class="animated bounce glyphicon glyphicon-exclamation-sign"></span> See also extension/wrappers:-->
+                    <!--<ul>-->
+                        <!--<li><a href="datawrapper.html">data wrapper extension</a></li>-->
+                        <!--<li><a href="titlewrapper.html">title wrapper extension</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="btspa">-->
+                    <!--<ul>-->
+                        <!--<li>napisać manual</li>-->
+                        <!--<li>title wrapper</li>-->
+                        <!--<li>data-* wrapper</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+
+
+            </div>
+            <div class="col2 left">
+                <p>Include jquery and plugin:</p>
+                <div class="syntax" data-lang="html" data-h="35px" data-w="644px">
                     
                     <textarea style="display: none;"><script src="jquery.js"></script>
-<script src="jquery.elkanatooltip.js"></script>
-<link rel="stylesheet" type="text/css" href="jquery.elkanatooltip.css" /></script></textarea>
-                    
-                </div>   
-                
+<script src="jquery.elkanatooltip.js"></script></textarea>
+
+                </div>
+                <p>Include generated css: <span class="btspa"><span class="animated bounce glyphicon glyphicon-exclamation-sign"></span></span> <a href="generator.html">go to generator of css</a></p>
+                <div class="syntax" data-lang="html" data-h="18px" data-w="644px">
+
+                    <textarea style="display: none;"><link rel="stylesheet" type="text/css" href="jquery.elkanatooltip.css" /></script></textarea>
+
+                </div>
+
                 <p>create two html elements, one for tooltip and second to positioning on them:</p>
                 <div class="syntax" data-lang="html" data-h="32px" data-w="644px">
                     
@@ -334,17 +386,17 @@ target
         target.elkanatooltip(!target.elkanatooltip().show);
     }); 
     
-// vvv this test of course only if you have included jQuery UI draggable vvv
+// vvv this test of course only works if you have included jQuery UI draggable
 target
     .draggable({ 
         drag: function () {                        
             process.nextTick(function() { // wrap in nextTick optional
-    // nextTick is constructed/provided by plugin elkanatooltip if not exists
+    // nextTick if not exists is constructed/provided by plugin elkanatooltip
                 target.elkanatooltip(true);
             })
         }
     });
-// ^^^ this test of course only if you have included jQuery UI draggable ^^^</script>                
+// ^^^ this test of course only works if you have included jQuery UI draggable</script>
                 
             </div>   
                                 

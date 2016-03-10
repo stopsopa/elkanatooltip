@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-    <!--http://httpd.pl/stopsopa.github.io/demos/jquery.elkanatooltip/generator.html-->
     <meta charset="UTF-8">
     <title>jQuery.elkanatooltip by Szymon Działowski</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -46,7 +45,6 @@
 
     <style type="text/css">
         body {
-            margin-top: 50px;
         }
         #body .ff {
             font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
@@ -61,14 +59,15 @@
         #cont {
             width: 950px;
             margin: auto;
+            margin-top: 10px;
         }
         .right {
             float: right;
         }
         .reset {
             float: right;
-            margin-right: 52px;
-            margin-top: 87px;
+            margin-right: 41px;
+            margin-top: 41px;
         }
         table {
             margin-right: 10px;
@@ -514,16 +513,16 @@
 
                                     //                            var style = tmp({json: option});
                                     var style = "/* url: "+update()+" */\n"+$.trim(
-                                                    tmp({
-                                                        json: option,
-                                                        perma: d,
-                                                        url: update()
-                                                    })
-                                                            .replace(/\n\s*\n/g, "\n").replace(/\n\s*\n/g, "\n")
-                                                            .replace(/(\/\*[.\S\s]*?\*\/)/g, '').replace(/\n\s*\n/g, "\n")
-                                                            .replace(/\n\s+/g, "\n    ").replace(/\n\s*}\s*\n\s*/g, "\n}\n")
-                                                            .replace(/,\n\s+/g, ',\n')
-                                            );
+                                        tmp({
+                                            json: option,
+                                            perma: d,
+                                            url: update()
+                                        })
+                                        .replace(/\n\s*\n/g, "\n").replace(/\n\s*\n/g, "\n")
+                                        .replace(/(\/\*[.\S\s]*?\*\/)/g, '').replace(/\n\s*\n/g, "\n")
+                                        .replace(/\n\s+/g, "\n    ").replace(/\n\s*}\s*\n\s*/g, "\n}\n")
+                                        .replace(/,\n\s+/g, ',\n')
+                                    );
 
                                     $('[data-source]').remove();
                                     $(ltmp).appendTo(head).html(style);
@@ -537,16 +536,16 @@
                                     elem.elkanatooltip(tool, option);
 
                                     elem
-                                            .draggable({
-                                                drag: function () {
-                                                    process.nextTick(function() {
-                                                        elem.elkanatooltip(true, d.cls);
-                                                    });
-                                                }
-                                            })
-                                            .click(function () {
-                                                elem.elkanatooltip(!elem.elkanatooltip(null, d.cls).show, d.cls);
-                                            });
+                                        .draggable({
+                                            drag: function () {
+                                                process.nextTick(function() {
+                                                    elem.elkanatooltip(true, d.cls);
+                                                });
+                                            }
+                                        })
+                                        .click(function () {
+                                            elem.elkanatooltip(!elem.elkanatooltip(null, d.cls).show, d.cls);
+                                        });
 
                                     $('table input:radio').unbind('click').click(function () {
                                         var t = $(this);
@@ -589,8 +588,39 @@
 //            
         });
     </script>
+    <style>
+        .navi {
+            background-color: #1b1b1b;
+            background-image: linear-gradient(to bottom, #222222, #111111);
+            background-repeat: repeat-x;
+            padding-left: 30px;
+            -webkit-box-shadow: 0 0 9px #000000;
+            box-shadow: 0 0 9px #000000;
+        }
+        .navi a {
+            color: #999999;
+            padding: 10px;
+            display: inline-block;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .navi a:hover {
+            color: white;
+        }
+        .navi a.active {
+            color: white;
+            background-color: black;
+        }
+    </style>
 </head>
 <body id="body">
+
+<div class="navi">
+    <a href="demo.html">js usage example</a>
+    <a href="generator.html" class="active">css generator</a>
+</div>
+
 <!--    <button data-style>style</button>
     <script type="text/tmp" data-style>
         * {
@@ -607,7 +637,6 @@
         <div class="col1 left">
 
             <div class="btsp">
-                <a href="https://github.com/stopsopa/elkanatooltip" class="btn btn-link btsp f" id="home" target="_blank"><img src="https://github.com/fluidicon.png" height="31" /> manual/download</a>
                 <a href="" class="reset btn btn-link btsp f">reset</a>
             </div>
 
@@ -662,6 +691,12 @@
 
             <div class="clear"></div>
 
+            <p class="tip t"><span class="red">*</span> params "me", "at" what's that ??? <br>
+                follow manual of <a href="https://jqueryui.com/position/" target="_blank">jQuery UI position</a>
+            </p>
+
+            <div class="clear"></div>
+
             <table class="controls t">
                 <tbody>
                 <tr>
@@ -712,13 +747,13 @@
             <div id="test" class="left f">
 
                 <!--
-                                     target element vvv
-                                        <div id="test_element" class="drag">drag or click</div>
-                                     target element ^^^
+                     target element vvv
+                        <div id="test_element" class="drag">drag or click</div>
+                     target element ^^^
 
-                                     tooltip element vvv
-                                        <div id="test_tooltip">first line <br /> second line</div>
-                                     tooltip element ^^^
+                     tooltip element vvv
+                        <div id="test_tooltip">first line <br /> second line</div>
+                     tooltip element ^^^
                 -->
 
             </div>
@@ -744,16 +779,7 @@
         <div class="col2 left">
             <p>Live css styles:</p>
             <div data-target class="syntax" data-lang="css" data-w="644px">
-                <script type="text/tmp">
-/* testowy css ma być zastąpiony przez javascript */
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
-
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-}
-                    </script>
+                <script type="text/tmp"></script>
             </div>
 
             <div class="btspa">
