@@ -1,5 +1,7 @@
 /**
- * ver 1 date: 2015-08-05
+ * @author Szymon Działowski
+ * @ver 1.0 - 2015-08-05
+ *
  * require: URI.js 1.16.0 http://medialize.github.io/URI.js/
  * 
     var update = $.urlstate({

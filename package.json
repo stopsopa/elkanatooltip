@@ -1,0 +1,22 @@
+{
+  "name": "elkanatooltip",
+  "version": "1.0.0",
+  "description": "Yet another toolbar jQuery plugin, but this time with full api control",
+  "main": "jquery.elkanatooltip.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stopsopa/elkanatooltip.git"
+  },
+  "keywords": [
+    "tooltip"
+  ],
+  "author": "Szymon Dzialowski <szymon.dzialowski@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stopsopa/elkanatooltip/issues"
+  },
+  "homepage": "https://github.com/stopsopa/elkanatooltip#readme"
+}
