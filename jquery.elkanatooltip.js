@@ -186,12 +186,8 @@
                             is ? i.replaceWith(n) : n.appendTo(o.tooltip);
                             o.i = n;
 
-//                            if (prepare) {
-                                o.tooltip.removeClass('v-t h-r v-b h-l vc-t hc-r vc-b hc-l h-center v-middle '+o.aanim)
-//                            }
-//                            else {
-//                                o.tooltip.removeClass('vc-t hc-r vc-b hc-l h-center v-middle '+o.aanim)
-//                            }
+                            o.tooltip.removeClass('v-t h-r v-b h-l vc-t hc-r vc-b hc-l h-center v-middle '+o.aanim)
+//
                             o.tooltip
                                 .css({
                                     top  : p.top + (o.offset.top || 0),
@@ -235,7 +231,6 @@
                             .addClass(o.ashow)
                             .position_elkanatooltip(oo) // setup margin
                             .position_elkanatooltip(oo) // setup all rest
-                            //.css({position: 'absolute'}) // i don't know why but jQuery UI position setup here 'relative' instead of 'absolute'
                             .addClass(o.astart)
                         ;
 
@@ -308,7 +303,7 @@
             o = $.extend(true, {
                 tooltip : false, // content as a string - optional
                 show    : true, // show on start
-                cls     : name, // main class, from this class depends entire layout and animations of tooltip
+                cls     : arguments[2] || name, // main class, from this class depends entire layout and animations of tooltip
                 ashow   : 'a-show',
                 astart  : 'a-start',
                 aanim   : 'a-anim',
@@ -344,10 +339,14 @@
                 tooltip = $('<div></div>').html(tooltip);
 
             try {
+                log('test data')
                 if (tooltip.parent().hasClass(o.cls)) {
+                    log('has')
                     tooltip = tooltip.parent();
                 }
                 else {
+                    log('o.cls')
+                    log(o.cls)
                     if (tooltip.data(o.cls))
                         return log('i found data, then exit')
 
@@ -364,17 +363,16 @@
                             if (is) {
                                 var p = tooltip.parent();
                                 div.appendTo(p)
-                                tooltip.appendTo(div);
-                                tooltip = div;
                             }
                             else {
                                 div.appendTo('body')
-                                tooltip.appendTo(div);
-                                tooltip = div;
                             }
+                            tooltip.appendTo(div);
+                            tooltip = div;
                         }
 
                         tooltip.addClass(o.cls);
+
                         o.i || (o.i = $('<i></i>').appendTo(tooltip));
                     })();
                 }

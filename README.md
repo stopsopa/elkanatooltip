@@ -2,7 +2,7 @@
 
 Yet another toolbar jQuery plugin, but this time with full api control 
 
-## Usage & Demo
+## Usage, demo & css generator
 
   [Demo](http://stopsopa.github.io/submod/elkanatooltip/demo.html)
 
@@ -22,15 +22,16 @@ First follow instructions of installation on [npm](https://www.npmjs.com/package
 Then you need to understand few things:
 
 
-- you can have multiple tooltip styles on one pages by [generating](http://stopsopa.github.io/submod/elkanatooltip/generator.html) separate css files. The only requirements is to have different [class name](http://stopsopa.github.io/submod/elkanatooltip/generator.html?tour=.controls%20tr:first%20input) in each css file, this is some kind of namespace for each style. Then you can include styles like this ...
+#### you can have multiple tooltip styles on one pages by [generating](http://stopsopa.github.io/submod/elkanatooltip/generator.html) separate css files. The only requirements is to have different [class name](http://stopsopa.github.io/submod/elkanatooltip/generator.html?tour=.controls%20tr:first%20input) in each css file (this is some kind of namespace or id for each style). 
+Then you can include styles like this ...
 
 
   
 ```html
-        <script src="jquery.js"></script>
-        <script src="jquery.elkanatooltip.js"></script>
-        <link rel="stylesheet" type="text/css" href="elkanatooltip_first-style-class_1457790488968.css" /></script>
-        <link rel="stylesheet" type="text/css" href="elkanatooltip_second-style-class_1457790488968.css" /></script>        
+<script src="jquery.js"></script>
+<script src="jquery.elkanatooltip.js"></script>
+<link rel="stylesheet" type="text/css" href="elkanatooltip_first-style-class_1457790488968.css" />
+<link rel="stylesheet" type="text/css" href="elkanatooltip_second-style-class_1457790488968.css" />        
 ```  
 
 ... and after that you are ready to use each style like below :
@@ -38,26 +39,81 @@ Then you need to understand few things:
 
 ```javascript
 
-    var option = {
-        "position": {
-            "my": "top",
-            "at": "bottom"
-        }
-    };
-    
-    var dct = $('.default_class_target');
-    var dci = $('.default_class_tip');
-    dct.elkanatooltip(dci, option); // class will be default 'elkanatooltip'
-    
-    var fct = $('.first_class_target');
-    var fci = $('.first_class_tip');
-    fct.elkanatooltip(fci, option, 'first-class'); 
-    
-    var sct = $('.second_class_target');
-    var sci = $('.second_class_tip');
-    sct.elkanatooltip(sci, option, 'first-class'); 
+var options = {
+    "position": {
+        "my": "top",
+        "at": "bottom"
+    }
+};
+
+var dct = $('.default-style-class-target');
+var dci = $('.default-style-class-tip');
+dct.elkanatooltip(dci, options); // class will be default: 'elkanatooltip'
+
+var fct = $('.first-style-class-target');
+var fci = $('.first-style-class-tip');
+fct.elkanatooltip(fci, options, 'first-class'); 
+
+var sct = $('.second-style-class-target');
+var sci = $('.second-style-class-tip');
+sct.elkanatooltip(sci, options, 'first-class'); 
     
 ```  
+
+#### show hide
+
+If tooltip is already initialized, then you can show or hide tooltip:
+
+```javascript
+target.elkanatooltip(true); // show
+target.elkanatooltip(false); // hide    
+```  
+
+Current state (if tooltip is visible or hidden) you can get under:
+ 
+```javascript
+target.elkanatooltip().show;    
+```  
+
+So you can easly toggle tooltip
+ 
+```javascript
+target.elkanatooltip( ! target.elkanatooltip().show);   
+```  
+
+If target is moving around page (for example it is draggable element) to reposition tooltip again on target simply do ...
+
+```javascript
+target
+    .draggable({ 
+        drag: function () { 
+            target.elkanatooltip(true);
+        }
+    });
+```  
+
+... or even better to get more consist positioning (you don't need to worry about existence of process.nextTick, it is polifiled by elkanatooltip itself) ...
+
+```javascript
+target
+    .draggable({ 
+        drag: function () {                        
+            process.nextTick(function() {
+                target.elkanatooltip(true);
+            })
+        }
+    });
+```  
+
+ 
+
+
+
+
+
+ 
+
+
 
 
 
