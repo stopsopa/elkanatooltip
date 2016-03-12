@@ -60,6 +60,7 @@
             width: 950px;
             margin: auto;
             margin-top: 10px;
+            position: relative;
         }
         .right {
             float: right;
@@ -212,12 +213,48 @@
             color: #333;
             margin: 2px;
         }
+        /* g(tour demo javascript) */
+        /* http://clu3.github.io/bootstro.js/ */
+        .demo {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: #000;
+            opacity: 0.5;
+            z-index: 1000;
+        }
+        .demo.show {
+            display: block;
+        }
+        /*.demo.init {*/
+            /*-webkit-transition: all 0.3s ease-in-out;*/
+            /*transition: all 0.3s ease-in-out;*/
+        /*}*/
     </style>
 
     <script>
         function log(l) {try {console.log(l);} catch (e) {}};
 
         $(function () {
+
+            //  //stopsopa.github.io/submod/elkanatooltip/generator.html?tour=.controls%20tr:first%20input
+            // http://stopsopa.github.io/submod/elkanatooltip/generator.html?tour=.controls%20tr:first%20input
+            (function () {
+                var p = URI(location.href).getQuery('tour');
+                if (p) {
+                    $(p).css({
+                        position: 'relative',
+                        zIndex: 1001
+                    });
+                    var d = $('.demo').addClass('show');
+                    $('body').click(function () {
+                        d.removeClass('show');
+                    })
+                }
+            }());
 
             window.edit = $.noop;
 
@@ -578,7 +615,6 @@
                 });
 
             })();
-
 //
 //
 //
@@ -797,6 +833,7 @@
         </div>
 
     </div>
+    <div class="demo"></div>
 </div>
 
 <!-- see http://codepo8.github.io/css-fork-on-github-ribbon/ -->
