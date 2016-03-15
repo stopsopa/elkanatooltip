@@ -162,9 +162,9 @@
                 if (typeof o != 'string')
                     log("No class specified, use default '"+ (o = name) +"'");
 
-                o = t.data(o);
+                o = t.data(name);
 
-                o || _thw("DOM data not found");
+                o || _thw("data not found, probably "+name+" plugin is not initialized on this DOM element");
 
                 if (!arguments.length)
                     return o;
@@ -277,7 +277,6 @@
                         }).call(t, o, visiblebefore);
 
                     if (getTransitionTime(o.tooltip)) {
-                        log('jest time')
                         o.tooltip.one(transitionend, function () {
 
                             if (!o.tooltip.hasClass(o.astop))
@@ -287,7 +286,6 @@
                         });
                     }
                     else {
-                        log('nie ma time')
                         o.tooltip.removeClass(o.aanim+' '+o.astart+' '+o.ashow);
                         afterHide();
                     }
@@ -295,7 +293,7 @@
                     o.show = false;
                 }
 
-                t.data(o.cls, o);
+                t.data(name, o);
 
                 return o;
             }
@@ -326,6 +324,8 @@
             if (typeof tooltip == 'string') {
                 switch (tooltip) {
                     case 'destroy':
+                        log('destroy method, not implemented yet')
+
 
 
                         break;
@@ -339,18 +339,14 @@
                 tooltip = $('<div></div>').html(tooltip);
 
             try {
-                log('test data')
                 if (tooltip.parent().hasClass(o.cls)) {
-                    log('has')
                     tooltip = tooltip.parent();
                 }
                 else {
-                    log('o.cls')
-                    log(o.cls)
-                    if (tooltip.data(o.cls))
-                        return log('i found data, then exit')
+                    if (tooltip.data(name))
+                        return log('i found data, then exit');
 
-                    ;(function () {
+                    (function () {
                         var is      = tooltip.parent().length,
                             div     = $('<div></div>');
 
@@ -377,7 +373,7 @@
                     })();
                 }
             } catch(e) {
-                log('exception: ');
+                log(name+' exception: ');
                 error(e)
             }
 
@@ -395,7 +391,7 @@
 
             o.tooltip = tooltip;
 
-            t.data(o.cls, o);
+            t.data(name, o);
 
             o.show && t[name](true, o.cls);
 
