@@ -30,8 +30,8 @@ Then you can include styles like this ...
 ```html
 <script src="jquery.js"></script>
 <script src="jquery.elkanatooltip.js"></script>
-<link rel="stylesheet" type="text/css" href="elkanatooltip_first-style-class_1457790488968.css" />
-<link rel="stylesheet" type="text/css" href="elkanatooltip_second-style-class_1457790488968.css" />        
+<link rel="stylesheet" type="text/css" href="elkanatooltip_first-style-class.css" />
+<link rel="stylesheet" type="text/css" href="elkanatooltip_second-style-class.css" />        
 ```  
 
 ... and after that you are ready to use each style like below :
@@ -75,11 +75,18 @@ Current state (if tooltip is visible or hidden) you can get under:
 target.elkanatooltip().show;    
 ```  
 
-So you can easly toggle tooltip
+So you can easly toggle tooltip by ...
  
 ```javascript
 target.elkanatooltip( ! target.elkanatooltip().show);   
 ```  
+
+.. or using special method for that:
+ 
+```javascript
+target.elkanatooltip('toggle');   
+```  
+
 
 If target is moving around page (for example it is draggable element) to reposition tooltip again on target simply do ...
 
@@ -104,7 +111,42 @@ target
         }
     });
 ```  
+ 
 
+#### correction
+
+It is possible to correct position of tooltip manually during initialization:
+
+
+
+```javascript
+var options = {
+    "position": {
+        "my": "top",
+        "at": "bottom"
+    },
+    offset: {
+        left: 20,
+        top: -10
+    }
+};
+
+var dct = $('.default-style-class-target');
+var dci = $('.default-style-class-tip');
+dct.elkanatooltip(dci, options);
+
+```  
+
+#### destroy
+
+To destroy component and reverse all states of divs simply call 
+
+
+```javascript
+var dct = $('.default-style-class-target');
+dct.elkanatooltip('destroy');
+
+```  
  
 
 

@@ -56,8 +56,8 @@
     var calculations = {};
 
     return function ($) {
-        //function log(l) {try {console.log(l);}catch (e) {}};
-        function log(l) {};
+        function log(l) {try {console.log(l);}catch (e) {}};
+        //function log(l) {};
         function error(l) {try {console.error(l);}catch (e) {}};
         function _thw(message) {throw "plugin jQuery(...)."+name+"() : "+message};
 
@@ -153,6 +153,7 @@
         })(window, 'nextTick', 'process', 'r webkitR mozR msR oR'.split(' '), 0);
 
         $.fn[name] = function () {
+
             var n, t = $(this), tooltip = arguments[0], o = arguments[1];
 
             (t.length > 1) && _thw("can't be used on more then one element at once");
@@ -187,7 +188,7 @@
                             o.i = n;
 
                             o.tooltip.removeClass('v-t h-r v-b h-l vc-t hc-r vc-b hc-l h-center v-middle '+o.aanim)
-//
+
                             o.tooltip
                                 .css({
                                     top  : p.top + (o.offset.top || 0),
@@ -221,8 +222,8 @@
                                 else if (k.p.vc === 'b')    c.bottom    = o.border + 'px';
                                 else                        c.top       = ((o.tooltip.outerHeight() / 2) - o.border) + 'px';
                             }
-                            else if (k.p.vc === 't')        c.top    = o.border + 'px';
-                            else if (k.p.vc === 'b')        c.bottom       = o.border + 'px';
+                            else if (k.p.vc === 't')        c.top       = o.border + 'px';
+                            else if (k.p.vc === 'b')        c.bottom    = o.border + 'px';
 
                             o.i.css(c);
                         };
@@ -243,17 +244,31 @@
                                 }
                             }).call(t, o, visiblebefore, k);
 
+
+
+
+
+                        
+                        log('visible: '+visible)
+                        log('test: '+getTransitionTime(o.tooltip))
+
+
+
+
                         if (visible) {
                             setTimeout(function() {
                                 o.tooltip
                                     .addClass(o.aanim)
                                     .addClass(o.astop)
                                 ;
+                                log('timeout')
                                 afterShow();
                             }, 20);
                         }
                         else {
                             process.nextTick(function() {
+
+                                log('nextTick')
                                 o.tooltip
                                     .one(transitionend, afterShow)
                                     .addClass(o.aanim)
@@ -321,21 +336,37 @@
                 forceRecalculateBorder: false,
             }, o || {});
 
-            if (typeof tooltip == 'string') {
+            if (typeof tooltip === 'string') {
                 switch (tooltip) {
                     case 'destroy':
-                        log('destroy method, not implemented yet')
 
+                        var d = t.data(name);
 
+                        if (!d)
+                            return _thw("You don't need to use method destroy because plugin '"+name+"' is not initialized on this DOM element yet");
 
-                        break;
+                        t.removeData(name);
+
+                        var p = d.tooltip;
+
+                        var div = p.children(':not(i):first');
+
+                        p.children('i').remove();
+
+                        div.unwrap();
+
+                        return t;
+                    case 'toggle':
+                        return t[name](!t[name]().show);
                     default:
                         return log('command '+tooltip+' not handled');
                 }
             }
 
+            t.data(name) && _thw("data found, probably "+name+" plugin is already initialized on this DOM element");
+
             // preparing mode
-            if (typeof o.tooltip == 'string')
+            if (typeof o.tooltip === 'string')
                 tooltip = $('<div></div>').html(tooltip);
 
             try {

@@ -542,11 +542,11 @@
                                     var tool        = testdiv.find('.test_tooltip');
 
                                     var d = update.defform();
-                                    d.a  = parseInt(d.a)
-                                    d.w  = parseInt(d.w)
-                                    d.r  = parseInt(d.r)
-                                    d.d  = parseInt(d.d)
-                                    d.sw = parseInt(d.sw)
+                                    d.a  = parseInt(d.a);
+                                    d.w  = parseInt(d.w);
+                                    d.r  = parseInt(d.r);
+                                    d.d  = parseInt(d.d);
+                                    d.sw = parseInt(d.sw);
 
                                     //                            var style = tmp({json: option});
                                     var style = "/* url: "+update()+" */\n"+$.trim(
@@ -576,7 +576,7 @@
                                         .draggable({
                                             drag: function () {
                                                 process.nextTick(function() {
-                                                    elem.elkanatooltip(true, d.cls);
+                                                    elem.elkanatooltip(elem.elkanatooltip(null, d.cls).show, d.cls);
                                                 });
                                             }
                                         })
@@ -597,7 +597,6 @@
                             }, 300);
 
                             edit();
-
                         });
 
                 function download(filename, content) {
