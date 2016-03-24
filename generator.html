@@ -581,12 +581,13 @@
                                             }
                                         })
                                         .click(function () {
-                                            elem.elkanatooltip(!elem.elkanatooltip(null, d.cls).show, d.cls);
+                                            elem.elkanatooltip( ! elem.elkanatooltip(null).show );
                                         });
 
-                                    $('table input:radio').unbind('click').click(function () {
+                                    $('table input:radio').off('click').on('click', function () {
                                         var t = $(this);
                                         option.position[t.attr('name')] = t.val();
+                                        elem.elkanatooltip('destroy');
                                         elem.elkanatooltip(tool, option);
                                     });
                                 }

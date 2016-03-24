@@ -207,6 +207,7 @@
                 $('table input').click(function () {
                     var t = $(this);
                     option.position[t.attr('name')] = t.val();
+                    elem.elkanatooltip('destroy');
                     elem.elkanatooltip(tool, option);
                     edit();
                 });
