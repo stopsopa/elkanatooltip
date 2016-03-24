@@ -160,11 +160,30 @@ var options = {
         at: "bottom"
     },
     afterShow: function () {
-        // under `this` is  
+        // eg: $(this).elkanatooltip().show
+    },
+    afterHide: function () {
+        // eg: $(this).elkanatooltip().show
     }
 };
 
-```  
+...
+
+``` 
+ 
+## Tips
+ 
+Elkanatooltip is designed in way that allow You to customize manually entire view in css, that includes also style of animation on hiding or showing tooltip (this was not easy to implement). These type of manual modification of css file shouldn't spoil any behaviour of plugin, so i encourage You to do that.
+
+Most of chenges can be done manually in css, for all rest what must be done with proper recalculations You can make by [generatior](http://stopsopa.github.io/submod/elkanatooltip/generator.html).
+
+Notice that in the first line of generated file is permalink that You can use to restore all states in generator in order to adjust previousely made style.
+ 
+This plugin is low level of future tools. Main job of this tool is to create tooltip on top of pointed div, show, hide (with animation or not) and reposition this tooltip. 
+
+Any bugs reports or pull request are welcome.
+
+Cheers :)
  
 
 
