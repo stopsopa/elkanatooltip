@@ -90,6 +90,7 @@ target.elkanatooltip('toggle');
 
 If target is moving around page (for example it is draggable element) to reposition tooltip again on target simply do ...
 
+
 ```javascript
 target
     .draggable({ 
@@ -98,6 +99,8 @@ target
         }
     });
 ```  
+
+* this draggable examples require [jQuery UI draggable](//jqueryui.com/draggable/)
 
 ... or even better to get more consist positioning (you don't need to worry about existence of process.nextTick, it is polifiled by elkanatooltip itself) ...
 
