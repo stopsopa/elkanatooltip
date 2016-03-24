@@ -94,13 +94,13 @@
                         cls: cls
                     }, cls);
 
-//                    c.draggable({
-//                        drag: function () {
-//                            process.nextTick(function () {
-//                                c.elkanatooltip(c.elkanatooltip().show, null, cls);
-//                            });
-//                        }
-//                    });
+                    c.draggable({
+                        drag: function () {
+                            process.nextTick(function () {
+                                c.elkanatooltip(c.elkanatooltip().show, null, cls);
+                            });
+                        }
+                    });
 
                     c.on('click', function () {
                         c.elkanatooltip( ! c.elkanatooltip(null, null, cls).show, null, cls);

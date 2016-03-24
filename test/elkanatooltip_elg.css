@@ -9,8 +9,8 @@
     opacity: 0;
 }
 .elg.a-start.a-anim {
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    /*-webkit-transition: all 0.3s ease-in-out;*/
+    /*transition: all 0.3s ease-in-out;*/
 }
 .elg[class*=" v-"].a-start.a-stop,
 .elg[class*=" h-"].a-start.a-stop,

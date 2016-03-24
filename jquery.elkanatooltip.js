@@ -235,47 +235,31 @@
                             .addClass(o.astart)
                         ;
 
-                        var visible = o.tooltip.is(':visible'),
-                            afterShow = (function () {
-                                var a = _a(arguments);
-                                var t = this;
-                                return function () {
-                                    o.afterShow.apply(t, a);
-                                }
-                            }).call(t, o, visiblebefore, k);
+                        var afterShow = (function () {
+                            var a = _a(arguments);
+                            var t = this;
+                            return function () {
+                                o.afterShow.apply(t, a);
+                            }
+                        }).call(t, o, visiblebefore, k);
 
+                        process.nextTick(function() {
 
+                            o.tooltip
+                                .addClass(o.aanim)
+                                .addClass(o.astop)
+                            ;
 
+                            var time = getTransitionTime(o.tooltip);
 
-
-                        
-                        log('visible: '+visible)
-                        log('test: '+getTransitionTime(o.tooltip))
-
-
-
-
-                        if (visible) {
-                            setTimeout(function() {
-                                o.tooltip
-                                    .addClass(o.aanim)
-                                    .addClass(o.astop)
-                                ;
-                                log('timeout')
+                            if (time) {
+                                o.tooltip.one(transitionend, afterShow)
+                            }
+                            else {
                                 afterShow();
-                            }, 20);
-                        }
-                        else {
-                            process.nextTick(function() {
+                            }
 
-                                log('nextTick')
-                                o.tooltip
-                                    .one(transitionend, afterShow)
-                                    .addClass(o.aanim)
-                                    .addClass(o.astop)
-                                ;
-                            });
-                        }
+                        });
 
                     })(o.show);
 
@@ -333,7 +317,7 @@
                 afterShow : $.noop,
                 afterHide : $.noop,
 
-                forceRecalculateBorder: false,
+                forceRecalculateBorder: false // for demo usecase
             }, o || {});
 
             if (typeof tooltip === 'string') {
@@ -359,7 +343,7 @@
                     case 'toggle':
                         return t[name](!t[name]().show);
                     default:
-                        return log('command '+tooltip+' not handled');
+                        return log('command '+tooltip+' not implemented');
                 }
             }
 

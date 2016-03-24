@@ -147,6 +147,24 @@ var dct = $('.default-style-class-target');
 dct.elkanatooltip('destroy');
 
 ```  
+
+#### events 
+
+afterShow and afterHide are triggered at the end of css show or hide animation (if are defined)
+
+```javascript
+
+var options = {
+    position: {
+        my: "top",
+        at: "bottom"
+    },
+    afterShow: function () {
+        // under `this` is  
+    }
+};
+
+```  
  
 
 
