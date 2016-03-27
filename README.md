@@ -153,7 +153,7 @@ dct.elkanatooltip('destroy');
 
 #### events 
 
-afterShow and afterHide are triggered at the end of css show or hide animation (if are defined, if they are not defined events are called immediately)
+afterShow and afterHide are triggered at the end of css show or hide animation (if animations are defined, if they are not defined, events are called immediately)
 
 ```javascript
 
