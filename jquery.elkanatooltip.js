@@ -122,16 +122,16 @@
 
                 eq(t.r, k.l) && (p.h = 'r');
                 eq(t.l, k.r) && (p.h = 'l');
+
                 if (p.h) {
-                    p.vc = (k.t - t.t) + (k.b - t.b)
-                    p.vc = eq(p.vc, 0) ? false : (p.vc > 0) ? 'b' : 't';
+                    p.vc = Math.abs(k.t - t.t) < Math.abs(k.b - t.b) ? 't' : 'b';
                 }
 
                 eq(t.b, k.t) && (p.v = 'b');
                 eq(t.t, k.b) && (p.v = 't');
+
                 if (p.v) {
-                    p.hc = (k.l - t.l) + (k.r - t.r)
-                    p.hc = eq(p.hc, 0) ? false : (p.hc > 0) ? 'r' : 'l';
+                    p.hc = Math.abs(k.l - t.l) < Math.abs(k.r - t.r) ? 'r' : 'l';
                 }
 
                 return {
@@ -180,6 +180,9 @@
 
                         oo.using = function(p, el, is, n, i) {
                             k = positions(el);
+                            log('k second v')
+                            log(k)
+//                             k.p.hc = 'r';
 
                             i   = o.tooltip.find('> i');
                             is  = i.length;
