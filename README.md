@@ -69,13 +69,13 @@ target.elkanatooltip(true); // show
 target.elkanatooltip(false); // hide    
 ```  
 
-Current state (if tooltip is visible or hidden) you can get under:
+You can examine - if tooltip is visible or hidden - under:
  
 ```javascript
 target.elkanatooltip().show;    
 ```  
 
-So you can easly toggle tooltip by ...
+... so you can easly toggle tooltip by ...
  
 ```javascript
 target.elkanatooltip( ! target.elkanatooltip().show);   
@@ -118,13 +118,13 @@ target
 
 #### correction
 
-It is possible to correct position of tooltip manually during initialization:
+It is possible to adjust position of tooltip manually during initialization:
 
 
 
 ```javascript
 var options = {
-    "position": {
+    "ui": {
         "my": "top",
         "at": "bottom"
     },
@@ -173,6 +173,25 @@ var options = {
 ...
 
 ``` 
+
+#### within 
+
+Element to position within, affecting collision detection. If you provide a selector or jQuery object, the first matching element will be used.
+
+```javascript
+
+var options = {
+    position: {
+        my: "top",
+        at: "bottom",
+        within: $('.selector')
+    }
+};
+
+...
+
+``` 
+
  
 ## Tips
  
