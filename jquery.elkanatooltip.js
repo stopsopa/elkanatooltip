@@ -109,9 +109,12 @@
                     vcll    : t.left   + (t.width / 2) // vertical center line left
                 };
             }
-            return function (e) {
+            return function (e, o) {
                 var k = calc(e.target);  // target coordinates
                 var t = calc(e.element); // tooltip coordinates
+
+                log('o')
+                log(o)
 
                 var p = {
                     h  : false, // l, r
@@ -120,21 +123,76 @@
                     vc : false  // l, r - vertical correction, if arrow should be moved left or fight from standard position
                 };
 
+                //eq(t.r, k.l) && (p.h = 'r');
+                //eq(t.l, k.r) && (p.h = 'l');
+                //
+                //if (p.h)
+                //    p.vc = Math.abs(k.t - t.t) < Math.abs(k.b - t.b) ? 't' : 'b';
+                //
+                //eq(t.b, k.t) && (p.v = 'b');
+                //eq(t.t, k.b) && (p.v = 't');
+                //
+                //if (p.v)
+                //    p.hc = Math.abs(k.l - t.l) < Math.abs(k.r - t.r) ? 'r' : 'l';
+
+
+
                 eq(t.r, k.l) && (p.h = 'r');
                 eq(t.l, k.r) && (p.h = 'l');
-
-                if (p.h)
-                    p.vc = Math.abs(k.t - t.t) < Math.abs(k.b - t.b) ? 't' : 'b';
+                if ( (p.h === 'r' || p.h === 'l')) {
+                    if (o.position.my.indexOf(' ') > -1) {
+                        if (o.position.my.indexOf('top') > -1) {
+                            p.vc = 't';
+                        }
+                        if (o.position.my.indexOf('bottom') > -1) {
+                            p.vc = 'b';
+                        }
+                    }
+                    else {
+                        if (o.position.at.indexOf('top') > -1) {
+                            p.vc = 'b';
+                        }
+                        if (o.position.at.indexOf('bottom') > -1) {
+                            p.vc = 't';
+                        }
+                    }
+                }
 
                 eq(t.b, k.t) && (p.v = 'b');
                 eq(t.t, k.b) && (p.v = 't');
+                if ( (p.v === 't' || p.v === 'b') ) {
+                    if (o.position.my.indexOf(' ') > -1) {
+                        if (o.position.my.indexOf('right') > -1) {
+                            p.hc = 'r';
+                        }
+                        if (o.position.my.indexOf('left') > -1) {
+                            p.hc = 'l';
+                        }
+                        //if (o.position.my.indexOf('right') > -1) {
+                        //    p.hc = 'r';
+                        //}
+                    }
+                    else {
+                        if (o.position.at.indexOf('right') > -1) {
+                            p.hc = 'l';
+                        }
+                        if (o.position.at.indexOf('left') > -1) {
+                            p.hc = 'r';
+                        }
+                    }
+                }
 
-                if (p.v)
-                    p.hc = Math.abs(k.l - t.l) < Math.abs(k.r - t.r) ? 'r' : 'l';
+                //if (p.v) {
+                //    p.hc = (k.l - t.l) + (k.r - t.r)
+                //    p.hc = eq(p.hc, 0) ? false : (p.hc > 0) ? 'r' : 'l';
+                //}
+
+                log('p')
+                log(p)
 
                 return {
-                    k : k,
-                    t : t,
+                    //k : k,
+                    //t : t,
                     p : p
                 }
             }
@@ -149,6 +207,12 @@
             }
             p[nextTick] = p[nextTick] || (fnc && fnc.bind(window)) || window.setImmediate || window.setTimeout;
         })(window, 'nextTick', 'process', 'r webkitR mozR msR oR'.split(' '), 0);
+
+        function tidy (o) {
+            var t = {};
+
+            return t;
+        }
 
         $.fn[name] = function () {
 
@@ -177,7 +241,7 @@
                         });
 
                         oo.using = function(p, el, is, n, i) {
-                            k = positions(el);
+                            k = positions(el, o);
 
                             i   = o.tooltip.find('> i');
                             is  = i.length;
@@ -208,9 +272,9 @@
 
                             var c = {};
                             if (el.horizontal === 'center') {
-                                if      (k.p.hc === 'r')    c.left      = o.border + 'px';
-                                else if (k.p.hc === 'l')    c.right     = o.border + 'px';
-                                else                        c.left      = ((o.tooltip.outerWidth() / 2) - o.border) + 'px';
+                                if      (k.p.hc === 'r')    c.right      = o.border + 'px';
+                                else if (k.p.hc === 'l')    c.left     = o.border + 'px';
+                                else                        c.right      = ((o.tooltip.outerWidth() / 2) - o.border) + 'px';
                             }
                             else if (k.p.hc === 'r')        c.right     = o.border + 'px';
                             else if (k.p.hc === 'l')        c.left      = o.border + 'px';
