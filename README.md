@@ -153,7 +153,7 @@ dct.elkanatooltip('destroy');
 
 #### events 
 
-afterShow and afterHide are triggered at the end of css show or hide animation (if are defined)
+afterShow and afterHide are triggered at the end of css show or hide animation (if animations are defined, if they are not defined, events are called immediately)
 
 ```javascript
 
@@ -199,7 +199,7 @@ Elkanatooltip is designed in way that allow You to customize manually entire vie
 
 Most of chenges can be done manually in css, for all rest what must be done with proper recalculations You can make by [generatior](http://stopsopa.github.io/submod/elkanatooltip/generator.html).
 
-Notice that in the first line of generated file is permalink that You can use to restore all states in generator in order to adjust previousely made style.
+Notice that in the first line of generated file is permalink that You can use to restore all states of generator in order to adjust previousely made style.
  
 This plugin is low level of future tools. Main job of this tool is to create tooltip on top of pointed div, show, hide (with animation or not) and reposition this tooltip. 
 
