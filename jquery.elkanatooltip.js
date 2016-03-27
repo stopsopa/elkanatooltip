@@ -178,9 +178,6 @@
 
                         oo.using = function(p, el, is, n, i) {
                             k = positions(el);
-                            log('k second v')
-                            log(k)
-//                             k.p.hc = 'r';
 
                             i   = o.tooltip.find('> i');
                             is  = i.length;
