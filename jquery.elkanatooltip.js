@@ -123,16 +123,14 @@
                 eq(t.r, k.l) && (p.h = 'r');
                 eq(t.l, k.r) && (p.h = 'l');
 
-                if (p.h) {
+                if (p.h)
                     p.vc = Math.abs(k.t - t.t) < Math.abs(k.b - t.b) ? 't' : 'b';
-                }
 
                 eq(t.b, k.t) && (p.v = 'b');
                 eq(t.t, k.b) && (p.v = 't');
 
-                if (p.v) {
+                if (p.v)
                     p.hc = Math.abs(k.l - t.l) < Math.abs(k.r - t.r) ? 'r' : 'l';
-                }
 
                 return {
                     k : k,
