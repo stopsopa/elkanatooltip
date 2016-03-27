@@ -56,8 +56,8 @@
     var calculations = {};
 
     return function ($) {
-        function log(l) {try {console.log(l);}catch (e) {}};
-        //function log(l) {};
+        //function log(l) {try {console.log(l);}catch (e) {}};
+        function log(l) {};
         function error(l) {try {console.error(l);}catch (e) {}};
         function _thw(message) {throw "plugin jQuery(...)."+name+"() : "+message};
 
@@ -113,29 +113,12 @@
                 var k = calc(e.target);  // target coordinates
                 var t = calc(e.element); // tooltip coordinates
 
-                log('o')
-                log(o)
-
                 var p = {
                     h  : false, // l, r
                     v  : false, // t, b
                     hc : false, // t, b - horizontal correction, if arrow should be moved top or down from standard position
                     vc : false  // l, r - vertical correction, if arrow should be moved left or fight from standard position
                 };
-
-                //eq(t.r, k.l) && (p.h = 'r');
-                //eq(t.l, k.r) && (p.h = 'l');
-                //
-                //if (p.h)
-                //    p.vc = Math.abs(k.t - t.t) < Math.abs(k.b - t.b) ? 't' : 'b';
-                //
-                //eq(t.b, k.t) && (p.v = 'b');
-                //eq(t.t, k.b) && (p.v = 't');
-                //
-                //if (p.v)
-                //    p.hc = Math.abs(k.l - t.l) < Math.abs(k.r - t.r) ? 'r' : 'l';
-
-
 
                 eq(t.r, k.l) && (p.h = 'r');
                 eq(t.l, k.r) && (p.h = 'l');
@@ -168,9 +151,6 @@
                         if (o.position.my.indexOf('left') > -1) {
                             p.hc = 'l';
                         }
-                        //if (o.position.my.indexOf('right') > -1) {
-                        //    p.hc = 'r';
-                        //}
                     }
                     else {
                         if (o.position.at.indexOf('right') > -1) {
@@ -181,14 +161,6 @@
                         }
                     }
                 }
-
-                //if (p.v) {
-                //    p.hc = (k.l - t.l) + (k.r - t.r)
-                //    p.hc = eq(p.hc, 0) ? false : (p.hc > 0) ? 'r' : 'l';
-                //}
-
-                log('p')
-                log(p)
 
                 return {
                     //k : k,
@@ -207,12 +179,6 @@
             }
             p[nextTick] = p[nextTick] || (fnc && fnc.bind(window)) || window.setImmediate || window.setTimeout;
         })(window, 'nextTick', 'process', 'r webkitR mozR msR oR'.split(' '), 0);
-
-        function tidy (o) {
-            var t = {};
-
-            return t;
-        }
 
         $.fn[name] = function () {
 

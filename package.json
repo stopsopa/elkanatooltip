@@ -1,6 +1,6 @@
 {
   "name": "elkanatooltip",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Yet another toolbar jQuery plugin, but this time with full api control",
   "main": "jquery.elkanatooltip.js",
   "scripts": {
