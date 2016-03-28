@@ -533,10 +533,11 @@
 
                             tmp = _.template(tmp);
 
+                            testdiv.empty().html(testdivs());
+
                             edit = _.debounce(function () {
 
                                 try {
-                                    testdiv.empty().html(testdivs());
 
                                     var elem        = testdiv.find('.test_element');
                                     var tool        = testdiv.find('.test_tooltip');
