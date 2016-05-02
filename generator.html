@@ -571,6 +571,12 @@
                                     dedit.clearSelection();
                                     dedit.getSession().setScrollTop(0);
 
+                                    try {
+                                        elem.elkanatooltip('destroy');
+                                    }
+                                    catch (e) {
+                                        log('not initialized - but nothing happened')
+                                    }
                                     elem.elkanatooltip(tool, option);
 
                                     elem
