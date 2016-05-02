@@ -206,16 +206,6 @@ This plugin is low level of future tools. Main job of this tool is to create too
 Any bugs reports or pull request are welcome.
 
 Cheers :)
- 
-
-
-
-
-
- 
-
-
-
 
 
 ### License

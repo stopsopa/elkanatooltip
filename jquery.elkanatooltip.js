@@ -139,6 +139,15 @@
                             p.vc = 't';
                         }
                     }
+                    // correct
+                    if (p.vc) {
+                        if (k.hclt > t.hclt) {
+                            p.vc = 'b';
+                        }
+                        else {
+                            p.vc = 't';
+                        }
+                    }
                 }
 
                 eq(t.b, k.t) && (p.v = 'b');
@@ -158,6 +167,15 @@
                         }
                         if (o.position.at.indexOf('left') > -1) {
                             p.hc = 'r';
+                        }
+                    }
+                    // correct
+                    if (p.hc) {
+                        if (k.vcll > t.vcll) {
+                            p.hc = 'r';
+                        }
+                        else {
+                            p.hc = 'l';
                         }
                     }
                 }
@@ -238,9 +256,9 @@
 
                             var c = {};
                             if (el.horizontal === 'center') {
-                                if      (k.p.hc === 'r')    c.right      = o.border + 'px';
-                                else if (k.p.hc === 'l')    c.left     = o.border + 'px';
-                                else                        c.right      = ((o.tooltip.outerWidth() / 2) - o.border) + 'px';
+                                if      (k.p.hc === 'r')    c.right     = o.border + 'px';
+                                else if (k.p.hc === 'l')    c.left      = o.border + 'px';
+                                else                        c.right     = ((o.tooltip.outerWidth() / 2) - o.border) + 'px';
                             }
                             else if (k.p.hc === 'r')        c.right     = o.border + 'px';
                             else if (k.p.hc === 'l')        c.left      = o.border + 'px';
