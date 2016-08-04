@@ -56,7 +56,7 @@ fct.elkanatooltip(fci, options, 'first-class');
 
 var sct = $('.second-style-class-target');
 var sci = $('.second-style-class-tip');
-sct.elkanatooltip(sci, options, 'first-class'); 
+sct.elkanatooltip(sci, options, 'second-class'); 
     
 ```  
 
