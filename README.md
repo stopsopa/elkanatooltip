@@ -1,6 +1,9 @@
 # DEPRECATED
 Created in 2016 - quite old now and not maintained.
 
+# demo
+- [demo.html](demo.html)
+- [katownik.html](katownik.html)
 
 # stopsopa/elkanatooltip
 
