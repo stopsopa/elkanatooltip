@@ -2,8 +2,8 @@
 Created in 2016 - quite old now and not maintained.
 
 # demo
-- [demo.html](demo.html)
-- [katownik.html](katownik.html)
+- [demo.html](http://stopsopa.github.io/elkanatooltip/demo.html)
+- [katownik.html](http://stopsopa.github.io/elkanatooltip/katownik.html)
 
 # stopsopa/elkanatooltip
 
