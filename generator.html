@@ -6,25 +6,25 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="normalize.min.css">
 
     <meta name="description" content="jQuery.line plugin to draw lines in HTML5 using pure CSS3 by Szymon Działowski">
     <meta name="keywords" content="jQuery.line plugin draw lines html5 css3">
 
-    <script src="../../js/jquery-1.11.2.js"></script>
-    <script src="../../js/jquery-ui-draggable.js"></script>
+    <script type="text/javascript" src="./docs//jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="./docs/jquery.ui.draggable.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="../../js/bootstrap-3.3.4/css/bootstrap-rewrite.css" media="all" />
 
-    <script src="../../js/jquery.minicolors/jquery.minicolors.2.2.3.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../js/jquery.minicolors/jquery.minicolors.2.2.3.css" media="all" />
+    <script src="jquery.minicolors.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery.minicolors.css" media="all" />
 
-    <script src="//d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" charset="utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="../../js/aceedit/jquery.aceedit.css" media="all" />
-    <script src="../../js/aceedit/jquery.aceedit.js"></script>
+    <script src="https://stopsopa.github.io/noprettier/ace/ace-builds-1.15.0/src-min-noconflict/ace.js"></script>
+    <script type="text/javascript" src="./docs/jquery.aceedit.js"></script>
+    <link rel="stylesheet" type="text/css" href="./docs/jquery.aceedit.css" media="all" />   
 
-    <script src="../../js/underscore.js"></script>
-    <script src="../../js/URI.js"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+    <!-- <script src="URI.js"></script> -->
     <script src="jquery.urlstate.js"></script>
 
     <style type="text/css" data-style></style>
@@ -243,7 +243,8 @@
             //  //stopsopa.github.io/submod/elkanatooltip/generator.html?tour=.controls%20tr:first%20input
             // http://stopsopa.github.io/submod/elkanatooltip/generator.html?tour=.controls%20tr:first%20input
             (function () {
-                var p = URI(location.href).getQuery('tour');
+                const params = new URLSearchParams(location.search);
+                var p = params.get('tour');
                 if (p) {
                     $(p).css({
                         position: 'relative',
@@ -537,7 +538,7 @@
 
                             edit = _.debounce(function () {
 
-                                try {
+                                // try {
 
                                     var elem        = testdiv.find('.test_element');
                                     var tool        = testdiv.find('.test_tooltip');
@@ -597,10 +598,10 @@
                                         elem.elkanatooltip('destroy');
                                         elem.elkanatooltip(tool, option);
                                     });
-                                }
-                                catch (e) {
-                                    log('To early to call edit(): '+e)
-                                }
+                                // }
+                                // catch (e) {
+                                //     log('To early to call edit(): '+e)
+                                // }
 
                             }, 300);
 
