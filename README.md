@@ -2,6 +2,7 @@
 Created in 2016 - quite old now and not maintained.
 
 # demo
+- [generator.html](http://stopsopa.github.io/elkanatooltip/generator.html)
 - [demo.html](http://stopsopa.github.io/elkanatooltip/demo.html)
 - [katownik.html](http://stopsopa.github.io/elkanatooltip/katownik.html)
 - [docs/index.html](http://stopsopa.github.io/elkanatooltip/docs/index.html)
