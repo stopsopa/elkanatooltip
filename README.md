@@ -1,3 +1,7 @@
+# DEPRECATED
+Created in 2016 - quite old now and not maintained.
+
+
 # stopsopa/elkanatooltip
 
 Yet another toolbar jQuery plugin, but this time with full api control 
