@@ -1,5 +1,5 @@
 # DEPRECATED
-Created in 2016 - quite old now and not maintained.
+Created in 2015 - quite old now and not maintained.
 
 # demo
 - [generator.html](http://stopsopa.github.io/elkanatooltip/generator.html)
