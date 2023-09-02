@@ -4,6 +4,7 @@ Created in 2016 - quite old now and not maintained.
 # demo
 - [demo.html](http://stopsopa.github.io/elkanatooltip/demo.html)
 - [katownik.html](http://stopsopa.github.io/elkanatooltip/katownik.html)
+- [docs/index.html](http://stopsopa.github.io/elkanatooltip/docs/index.html)
 
 # stopsopa/elkanatooltip
 
