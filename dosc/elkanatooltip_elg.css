@@ -1,0 +1,156 @@
+/* url: http://stopsopa.github.io/submod/elkanatooltip/generator.html?permalink=(!b!-!%236FAB92!*!cls!-!elg!) */
+.elg {
+    display: none;
+    z-index: 100;
+    position: absolute;
+}
+.elg.a-show {
+    display: inline-block;
+    opacity: 0;
+}
+.elg.a-start.a-anim {
+    /*-webkit-transition: all 0.3s ease-in-out;*/
+    /*transition: all 0.3s ease-in-out;*/
+}
+.elg[class*=" v-"].a-start.a-stop,
+.elg[class*=" h-"].a-start.a-stop,
+.elg[class^="v-"].a-start.a-stop,
+.elg[class^="h-"].a-start.a-stop,
+.elg.a-start.a-anim.a-stop {
+    -ms-transform: translate(0px, 0px);
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    opacity: 0.93;
+}
+.elg > div {
+    background-color: #6FAB92;
+    padding: 3px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 6px #000000;
+    box-shadow: 0 0 6px #000000;
+    border: 1px solid #333333;
+}
+.elg > i {
+    position: absolute;
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 7px transparent solid;
+}
+.elg > i:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 5px transparent solid;
+}
+.elg[class^="hc-"][class*=" vc-"] > i,
+.elg[class^="vc-"][class*=" hc-"] > i,
+.elg[class*=" vc-"][class*=" hc-"] > i {
+    border: none;
+}
+.elg[class^="hc-"][class*=" vc-"] > div,
+.elg[class^="vc-"][class*=" hc-"] > div,
+.elg[class*=" vc-"][class*=" hc-"] > div {
+    margin: 3px;
+}
+.elg.v-b.a-start {
+    -ms-transform: translate(0px, -10px);
+    -webkit-transform: translate(0px, -10px);
+    transform: translate(0px, -10px);
+}
+.elg.v-b > div {
+    margin-bottom: 9px;
+}
+.elg.v-b > i {
+    border-top: 7px #333333 solid;
+    border-bottom: none;
+    bottom: 3px;
+}
+.elg.v-b > i::before {
+    border-top: 5px #6FAB92 solid;
+    border-bottom: none;
+    bottom: 0px;
+    -ms-transform: translate(-5px, -2px);
+    -webkit-transform: translate(-5px, -2px);
+    transform: translate(-5px, -2px);
+}
+.elg.v-t.a-start {
+    -ms-transform: translate(0px, 10px);
+    -webkit-transform: translate(0px, 10px);
+    transform: translate(0px, 10px);
+}
+.elg.v-t > div {
+    margin-top: 9px;
+}
+.elg.v-t > i {
+    border-bottom: 7px #333333 solid;
+    border-top: none;
+    top: 3px;
+}
+.elg.v-t > i::before {
+    border-bottom: 5px #6FAB92 solid;
+    border-top: none;
+    top: 0px;
+    z-index: 101;
+    -ms-transform: translate(-5px, 2px);
+    -webkit-transform: translate(-5px, 2px);
+    transform: translate(-5px, 2px);
+}
+.elg.h-r.a-start {
+    -ms-transform: translate(-10px, 0px);
+    -webkit-transform: translate(-10px, 0px);
+    transform: translate(-10px, 0px);
+}
+.elg.h-r > div {
+    margin-right: 9px;
+}
+.elg.h-r > i {
+    border-left: 7px #333333 solid;
+    border-right: none;
+    right: 3px;
+}
+.elg.h-r > i::before {
+    border-left: 5px #6FAB92 solid;
+    border-right: none;
+    right: 0px;
+    z-index: 101;
+    -ms-transform: translate(-2px, -5px);
+    -webkit-transform: translate(-2px, -5px);
+    transform: translate(-2px, -5px);
+}
+.elg.h-l.a-start {
+    -ms-transform: translate(10px, 0px);
+    -webkit-transform: translate(10px, 0px);
+    transform: translate(10px, 0px);
+}
+.elg.h-l > div {
+    margin-left: 9px;
+}
+.elg.h-l > i {
+    border-right: 7px #333333 solid;
+    border-left: none;
+    left: 3px;
+}
+.elg.h-l > i::before {
+    border-right: 5px #6FAB92 solid;
+    border-left: none;
+    left: 0px;
+    -ms-transform: translate(2px, -5px);
+    -webkit-transform: translate(2px, -5px);
+    transform: translate(2px, -5px);
+}
+.elg.h-l.v-b > i::before,
+.elg.h-l.v-t > i::before,
+.elg.h-r.v-b > i::before,
+.elg.h-r.v-t > i::before {
+    display: none;
+}
+body span.elg.test {
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-top: 7px solid transparent !important;
+    border-bottom: 1px solid transparent !important;
+}

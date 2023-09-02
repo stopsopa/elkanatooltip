@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elk test</title>
+    <script src="../../../js/jquery-1.11.2.js"></script>
+    <script src="../../../js/jquery-ui-draggable.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>-->
+    <script src="../jquery.elkanatooltip.js"></script>
+
+    <link rel="stylesheet" href="elkanatooltip.css">
+    <link rel="stylesheet" href="elkanatooltip_elb.css">
+    <link rel="stylesheet" href="elkanatooltip_elg.css">
+
+    <style>
+        * {
+            font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+        }
+        body > div > div {
+            margin: 10px;
+            float: left;
+        }
+        .busy {
+            padding: 10px;
+        }
+        .left {
+            float: left;
+        }
+        #cont {
+            width: 50%;
+        }
+        .border {
+            border: 1px solid gray;
+        }
+        .target,
+        .choosen {
+            border-style: dashed;
+        }
+        .tooltip {
+            border-style: dotted;
+        }
+    </style>
+    <script>
+        function log(l) {try {console.log(l);}catch (e) {}};
+
+        $(function () {
+
+            var hex = (function () {
+                var i = 0;
+                return function () {
+                    return (i += 1).toString(16);
+                }
+            }());
+
+            var lorem = (function (d) {
+                var tmp = [];
+                function lorem() {
+                    if (!tmp.length) {
+                        tmp = d.slice();
+                    }
+                    return tmp.shift();
+                };
+                return function () {
+                    return [lorem(), lorem(), lorem()].join(' ');
+                }
+            }($('body').data('lorem').split(/\s+/g)));
+
+            var b = $('#cont');
+            for (var i = 0 ; i < 100 ; i += 1 ) {
+                var inner = $('<div></div>').html(lorem()).addClass('border').attr('id', 'i'+hex());
+                $('<div></div>').append(inner).appendTo(b);
+            }
+
+            $('body').on('click', 'div > div > div', function (e) {
+
+                var t = $(e.target);
+
+                if (t.hasClass('busy')) {
+                    return;
+                }
+
+                t.addClass('busy');
+
+                var c = $('.choosen').removeClass('choosen');
+
+                if (c.length) {
+                    var cls = $(':radio:checked').val();
+
+                    c.elkanatooltip(t.removeClass('border'), {
+                        "position": {
+                            "my": "top",
+                            "at": "bottom"
+                        },
+                        cls: cls
+                    }, cls);
+
+                    c.draggable({
+                        drag: function () {
+                            process.nextTick(function () {
+                                c.elkanatooltip(c.elkanatooltip().show, null, cls);
+                            });
+                        }
+                    });
+
+                    c.on('click', function () {
+                        c.elkanatooltip( ! c.elkanatooltip(null, null, cls).show, null, cls);
+                    });
+
+                    return;
+                }
+
+                t.addClass('choosen');
+            });
+        })
+    </script>
+</head>
+<body data-lorem="Lorem ipsum dolor sit amet consectetur adipiscing elit Vestibulum viverra lectus eu fermentum porta Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus lacinia semper ex eget venenatis Vivamus accumsan scelerisque leo et maximus Quisque a iaculis odio Nullam vel tincidunt enim nec pellentesque sapien Proin mattis velit lorem et malesuada leo pulvinar quis Vivamus vel ligula metus Aliquam vehicula laoreet risus ac varius Mauris euismod venenatis rhoncus Cras eu dapibus odio Nullam elementum mollis turpis sed bibendum Maecenas quam massa accumsan ut tempor accumsan vehicula ut neque Aliquam cursus sollicitudin arcu at consequat Curabitur sollicitudin vel turpis ac feugiat Donec at libero mattis lacinia eros id pulvinar sem Sed luctus odio ac mi ullamcorper eget rhoncus orci ornare Pellentesque id pulvinar justo a suscipit dui Nullam blandit massa id hendrerit mattis mauris justo faucibus mi in vestibulum est dolor eget nunc Proin a metus nunc Integer ac neque euismod tempor mauris placerat imperdiet ligula Donec at lacus efficitur posuere felis sed posuere nulla Proin eget purus suscipit sagittis leo sed gravida odio Nam vestibulum urna metus eget pellentesque metus placerat ut Aenean volutpat quam eu lorem aliquam quis venenatis lectus lobortis Donec ac risus iaculis convallis elit nec fermentum leo Suspendisse sed tempor lorem Aliquam erat volutpat Nulla egestas lacus mollis auctor ligula vitae congue lorem Cras auctor a odio tempor placerat Etiam aliquet urna ac nisi feugiat semper Pellentesque mollis non est at dapibus Quisque vulputate interdum ligula et efficitur eros pretium consectetur Quisque et maximus nibh Nulla sem nisi dapibus quis eleifend a gravida at lectus Quisque aliquet nulla orci non tempor velit pretium sed Proin at purus finibus porttitor leo nec tincidunt augue Cras luctus rhoncus purus quis accumsan Nunc scelerisque eleifend purus non fermentum libero faucibus suscipit Nam at velit at justo faucibus malesuada Nunc eget maximus dolor sit amet dictum nunc Nulla malesuada arcu sit amet nisi tristique bibendum Cras molestie elementum orci id pharetra arcu euismod a Nullam ut porta sapien sit amet finibus justo Vivamus hendrerit magna eu congue interdum Duis consectetur accumsan porttitor Cras eu risus ante Donec vitae elit sit amet mi volutpat fringilla vitae eu elit">
+    <div id="cont" class="left">
+    </div>
+    <div class="left">
+        <label for="elkanatooltip">
+            <input type="radio" name="cls" value="elkanatooltip" id="elkanatooltip" autocomplete="off" checked>
+            default
+        </label>
+        <label for="elb">
+            <input type="radio" name="cls" value="elb" id="elb" autocomplete="off">
+            brown
+        </label>
+        <label for="elg">
+            <input type="radio" name="cls" value="elg" id="elg" autocomplete="off">
+            green
+        </label>
+    </div>
+</body>
+</html>
